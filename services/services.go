@@ -12,19 +12,22 @@ import (
 
 func Get() []string {
 
+	//Primeiro, vamos criar um cliente. Como não definimos configurações, ele usuará o docker.sock.
 	cli, err := client.NewEnvClient()
 	if err != nil {
 		panic(err)
 	}
 	
+	//Agora criamos a lista de serviços.
 	services, err := cli.ServiceList(context.Background(), types.ServiceListOptions{})
 	if err != nil {
 		panic(err)
 	}
 
-	//Name,ID,Version,Mode,Image
+	//Vamos criar um slice para receber os dados.
 	var list []string
 
+	//Agora corremos pela lista de serviços, adicionando os dados ao slice.
 	for _, service := range services {
 
 		var name = service.Spec.Name
@@ -46,6 +49,7 @@ func Get() []string {
 		list = append(list, line)
 	}
 	
+	//Retornamos o slice, terminado por aqui.
 	return list
 
 }
