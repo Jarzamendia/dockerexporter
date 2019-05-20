@@ -13,6 +13,7 @@ func Get() []string {
 	if err != nil {
 		panic(err)
 	}
+	defer cli.Close()
 
 	nodes, err := cli.NodeList(context.Background(), types.NodeListOptions{})
 	if err != nil {
@@ -20,6 +21,9 @@ func Get() []string {
 	}
 
 	var list []string
+
+	var header = "Hostname" + ", " + "Role" + ", " + "Plataform" + ", " + "Engine" + ", " + "Status" + ", " + "CreatedAt"
+	list = append(list, header)
 
 	//Agora corremos pela lista de serviços, adicionando os dados ao slice.
 	for _, node := range nodes {

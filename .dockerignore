@@ -1,0 +1,5 @@
+# Dockerignore file
+*.md
+*.ps1
+release
+.vscode/*

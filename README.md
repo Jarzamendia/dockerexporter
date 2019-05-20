@@ -12,7 +12,8 @@ https://cloud.docker.com/u/jarzamendia/repository/docker/jarzamendia/dockerexpor
 
 ## Modo de uso
 
-$ docker exec -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION='1.39' jarzamendia/dockerexporter -metric services
+$ docker exec -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION='1.39' jarzamendia/dockerexporter services
+$ docker exec -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION='1.39' jarzamendia/dockerexporter nodes
 
 Ele irá gerar o resultado em CSV.
 
@@ -22,8 +23,8 @@ As seguintes metricas são recebidas:
 
 ### Services
 
-### System
+Nome, Modo, Imagem, CriadoEm
 
 ### Nodes
 
-### Containers
+Hostname, Papel, Plataforma(OS), Versão, Status, CriadoEm
